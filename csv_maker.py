@@ -1,7 +1,7 @@
 import csv
 import geopandas as gpd
 
-hospitals = gpd.read_file('game_grid_export/facilities/hospitals.shp')
+hospitals = gpd.read_file('facilities/hospitals.shp')
 small_hospitals = hospitals.loc[hospitals['BEDS'] < 200].to_crs(epsg=3857)
 large_hospitals = hospitals.loc[hospitals['BEDS'] >= 200].to_crs(epsg=3857)
 ems = gpd.read_file('game_grid_export/facilities/EMS.shp')
