@@ -1,4 +1,5 @@
 import csv
+import geopandas as gpd
 
 hospitals = gpd.read_file('game_grid_export/facilities/hospitals.shp')
 small_hospitals = hospitals.loc[hospitals['BEDS'] < 200].to_crs(epsg=3857)
@@ -21,13 +22,14 @@ with open('resources.csv', 'w') as csvfile:
         filewriter.writerow([objectid, 'hospital_s', 150, 150, 0])
     for objectid in large_hospitals['OBJECTID']:
         filewriter.writerow([objectid, 'hospital_l', 300, 300, 0])
-    for objectid in large_ems['OBJECTID']:
+        print(ems)
+    for objectid in large_ems['ID']:
         filewriter.writerow([objectid, 'ems_l', 0, 150, 0])
-    for objectid in small_ems['OBJECTID']:
+    for objectid in small_ems['ID']:
         filewriter.writerow([objectid, 'ems_s', 0, 75, 0])
-    for objectid in shelters['OBJECTID']:
+    for objectid in shelters['ID']:
         filewriter.writerow([objectid, 'shelter', 300, 0, 0])
-    for objectid in fire_stations['OBJECTID']:
+    for objectid in fire_stations['ID']:
         filewriter.writerow([objectid, 'fire_station', 0, 0, 0])
     for objectid in local_eocs['OBJECTID']:
         filewriter.writerow([objectid, 'eoc_local', 0, 0, 0])
