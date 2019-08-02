@@ -17,17 +17,17 @@ with open('resources.csv', 'w') as csvfile:
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(['objectid', 'type', 'food_water', 'medicine', 'fuel'])
 
-    for objectid in small_hospitals['ID']: 
+    for objectid in small_hospitals['OBJECTID']: 
         filewriter.writerow([objectid, 'hospital_s', 150, 150, 0])
-    for objectid in large_hospitals['ID']:
+    for objectid in large_hospitals['OBJECTID']:
         filewriter.writerow([objectid, 'hospital_l', 300, 300, 0])
-    for objectid in large_ems['ID']:
+    for objectid in large_ems['OBJECTID']:
         filewriter.writerow([objectid, 'ems_l', 0, 150, 0])
-    for objectid in small_ems['ID']:
+    for objectid in small_ems['OBJECTID']:
         filewriter.writerow([objectid, 'ems_s', 0, 75, 0])
-    for objectid in shelters['ID']:
+    for objectid in shelters['OBJECTID']:
         filewriter.writerow([objectid, 'shelter', 300, 0, 0])
-    for objectid in fire_stations['ID']:
+    for objectid in fire_stations['OBJECTID']:
         filewriter.writerow([objectid, 'fire_station', 0, 0, 0])
     for objectid in local_eocs['OBJECTID']:
         filewriter.writerow([objectid, 'eoc_local', 0, 0, 0])
