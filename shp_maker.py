@@ -1,4 +1,5 @@
 import geopandas as gpd
+from shapely.geometry import Polygon
 
 generator_l = gpd.read_file('facilities/')
 
@@ -10,11 +11,12 @@ for i in range(10):
 for i in range(40):
     _type.append('cell_tower_mobile')
 
-for i in range(200):
-    _type.append('sandbag')
+
 
 objectid = [i for i in range(1000001, 1000001 + len(_type))]
-geometry = [i for i in range(1000001, 1000001 + len(_type))]
+geometry = [Polygon([[0,0], [1,0], [1,1], [0,1]]),
+            Polygon([[0,0], [1,0], [1,1], [0,1]]),
+           ]
 
 data = {'objectid': objectid, 
         'type' : _type, 
@@ -24,3 +26,5 @@ print(len(_type))
 print(len(objectid))
 x = gpd.GeoDataFrame.from_dict(data)
 print(x)
+
+data.to_file('test.shp')
