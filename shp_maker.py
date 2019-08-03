@@ -11,9 +11,11 @@ for i in range(40):
 
 for i in range(200):
     _type.append('sandbag')
+    
 objectid = [i for i in range(1000001, 1000001 + len(_type))]
 geometry = []
 
+# just testing
 for i in range(250):
     geometry.append(Polygon([[0,0], [1,0], [1,1], [0,1]]))
 
