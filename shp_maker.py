@@ -1,4 +1,5 @@
-bro_man = magic(0, 10000, flooding, 500, 0, 'hospital')['geometry']
+# shapes = magic(0, 10000, flooding, 500, 0, 'hospital')['geometry']
+# ^ Brian's magic function at work
 
 import geopandas as gpd
 from shapely.geometry import Polygon
@@ -15,24 +16,14 @@ for i in range(19):
     _type.append('sandbag')
     
 objectid = [i for i in range(1000001, 1000001 + len(_type))]
-geometry = []
-
-
-
-# just testing
-for i in bro_man:
-    geometry.append(i)
+geometry = shapes
 
 data = {'objectid': objectid, 
         'type' : _type, 
         'geometry': geometry}
 
-bruh = gpd.GeoDataFrame.from_dict(data)
-
-bruh.crs = {'init' :'epsg:3857'}  
-# ^ comment out to get a "Cannot transform naive geometries" error below
-
+gdf = gpd.GeoDataFrame.from_dict(data)
+gdf.crs = {'init' :'epsg:3857'}  
 # project to merkator
-bruh.to_crs({'init': 'epsg:3857'})
-
-bruh.to_file('assets.shp')
+gdf.to_crs({'init': 'epsg:3857'})
+gdf.to_file('assets.shp')
