@@ -1,8 +1,6 @@
 import geopandas as gpd
 from shapely.geometry import Polygon
 
-generator_l = gpd.read_file('facilities/')
-
 _type = []
 
 for i in range(10):
